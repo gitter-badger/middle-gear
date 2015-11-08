@@ -12,7 +12,7 @@ v0.1.2
 
 * Drop `<`, `>` or `/>` from your start tags (ex. ```</div> <br/>```).
 * Remove end tags (ex. ```</div>```) entirely.
-* Place tag's text (ex. ```<span>It's Text</span>```) inside quote marks `'` or `"`.
+* Place tag's text (ex. ```<span>It's Text</span>```) inside quote marks `'` or `"` or even backtick `` ` ``.
 * Use `indention` for applying HTML hierarchy. 
 * When putting HTML tags inside a JavaScript block apply `indention` rule too. 
 
@@ -105,8 +105,37 @@ table
             td '@{color}'
     })
 ```
+### Putting tags in same line
+Use `>` for separating tags that are in the same line:
+```
+//bootstrap dropdown-menu
+ul.dropdown-menu
+    li > a href="#" 'Action'
+    li > a href="#" 'Another action'
+```
+### Breaking line into multiple lines
+For doing this, use `,` at the end of line:
+```
+    button.btn.btn-default.dropdown-toggle,
+type="button",
+id="dropdownMenu2",
+data-toggle="dropdown",
+aria-haspopup="true" aria-expanded="false"
+```
+**Note**: As you see, it's not needed to follow `indention` rule for beaked lines.
 
-#### Shorthands
+### Plain text
+Browsers eliminate whitespaces but not *Middle Gear*. Everything that is written inside quote marks will be rendered in the same way.
+```
+  div
+    pre
+"It's a 
+    multi line
+plain
+text"
+```
+
+### Shorthands
 Melody supports shorthand for writing tags:
 
 * Use `#` after tag's name for adding id:
