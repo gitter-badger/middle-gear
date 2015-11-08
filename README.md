@@ -105,10 +105,9 @@ table
             td '@{color}'
     })
 ```
-### Putting tags in same line
+### Putting tags in a same line
 Use `>` for separating tags that are in the same line:
 ```
-//bootstrap dropdown-menu
 ul.dropdown-menu
     li > a href="#" 'Action'
     li > a href="#" 'Another action'
@@ -122,7 +121,7 @@ id="dropdownMenu2",
 data-toggle="dropdown",
 aria-haspopup="true" aria-expanded="false"
 ```
-**Note**: As you see, it's not needed to follow `indention` rule for broken lines.
+**Note**: As you see, it's not needed to follow `indention` rule for the broken lines.
 
 ### Plain text
 Browsers eliminate whitespaces but not *Middle Gear*. Everything that is written inside quote marks will be rendered in the same way.
@@ -135,22 +134,34 @@ plain
 text"
 ```
 
+### Using custom tags in Melody
+For adding non-HTML5 tags to your markup you should explicitly express it using `>` before the name of tag.
+```
+div
+  > custom-tag 
+
+```
+
 ### Shorthands
 Melody supports shorthand for writing tags:
 
 * Use `#` after tag's name for adding id:
+
 ```
 input#username
 input #username
 ```
 
 * Use `.` after tag's name or id for adding class:
+
 ```
 input #username .class1 .class2
 input.class1.class2#username 
 ```
 
----
+### Commenting
+Like JavaScript, can use `//` and `/*..*/` for commenting.
+
 ### What about *Controller* code?
 ```
 var viewEngine = new(require('middle-gear'))({
