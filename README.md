@@ -1,146 +1,82 @@
-######v0.1.2
+v0.1.2
 
-Welcome to Middle Gear!
-==
+# Middle Gear
+**Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, don't use it in production please.
 
->**Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, don't use it in production please.
-
-----------
-
-**Installation**
+### Installation
 
 `npm install middle-gear`
 
-**`Hello world` using Middle Gear**
+### Let's Start
+*Middle Gear* is using a language named **Melody**. But you will not forced to learn a new language. **Melody** is **HTML** plus **JavaScript**. With *Melody* You can **mix** JavaScript with HTML easily. There are a few simple rules to write *Melody*:
+
+* Drop `<`, `>` or `/>` from your start tags (ex. ```</div> <br/>```).
+* Remove end tags (ex. ```</div>```) entirely.
+* Use `indention` for applying HTML hierarchy. 
+* When putting HTML tags inside a JavaScript block apply indention rule too. 
+* Place tag's text (ex. ```<span>It's Text</span>```) inside quote marks `'` or `"`.
+
 ```
-middle-gear-hello-world
-│   app.js
-│   layout.mel   
-│   index.mel
+var colors = ['Blue','Green','Red'];
+table
+  for (var i = 0; i < colors.length; i++) {    
+      tr
+      td '@{colors[i]}'
+  }
 ```
-######*app.js*
+**Tip**: As you see, the `for` block is using `indention` to place inside of `table` tag and `tr` tag doing the same to tell that it's inside of the `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere.
+
+**Note:** It's not possible to mix JavaScript and HTML in one line.
+
+### Adding dynamic value to markup
+As you see in above example, we are using `@{}` for adding dynamic values to our markup. Inside the **Dynamic value block**, you can use any expression that returns a value. All of following expressions are acceptable:
+
 ```
-var viewEngine = new(require('middle-gear'))({
-  rootDirname: __dirname
-});
-var markup = viewEngine.renderFile('index.mel');
-console.log(markup);
+span '1+1=@{1+1}'
+'@{parsInt("1")}'
+'@{1===1? true : false}'
+input name="@{username}"
 ```
-######*layout.mel*
+
+### Sending data to markup from outside
+*Middle Gear* is supporting **MVC** architecture. It means you can send **Model** to a Melody **View**.
 ```
+var __ = model;
+div
+  span "@{__.msg}"
+```
+**Note**: As you see We have used `model` object for accessing the data that has been sent from `controller`.
+
+### Inheritance
+```
+//layout.mel
 html
   head
     title 'Middle Gear - Hello World'
   body
     load name="content"
 ```
-
-######*index.mel*
 ```
+//index.mel
 layout src="layout.mel"
 sector name="content"
   span "Hello world!"
 ```
-> **Tip:**  The shorthand syntax is named **Melody Language** and `.mel` prefix is its abbreviation. You can drop .mel in `src` attributes and for it your file must perfixed with `.mel`. 
+### Third party framework support
+#### **Angular**
+Current version of *Middle Gear* compiler supports **Angular 2.0** syntax.
 
-----------
-###Let's Start
-> **Melody** uses **JavaScript** for coding.
-
-You can **mix** `JavaScript` with `Melody`. This is one of the unique and powerful features of Melody. It means you don't have to learn a new language. **Melody** is **HTML** plus **JavaScript**. There are a few rules to write Melody. It is simple:
-
-> - Drop `<`, `>` or `/>` from your tags.
-> - Remove end tags (ex. ```</div>```)
-> - Use `indention` for applying HTML hierarchy. 
-> - When putting HTML tags inside a JavaScript block apply indention rule. 
-> *We will support CoffeeScript as coding language in later versions to prevent such mistakes.*
-> - Place tag's text inside quote marks `'` or `"`.
-
-#####**Example 1**:
-######*app.js*
 ```
-var viewEngine = new(require('middle-gear'))({
-  rootDirname: __dirname
-});
-var markup = viewEngine.renderFile('ex-1');
-console.log(markup);
-```
-######*ex-1.mel*
-```
-var colors = [
-  'Blue',
-  'Green',
-  'Red',
-];
-
-table
-  for (var i = 0; i < colors.length; i++) {
-    var color = colors[i];
-    
-    tr
-      td '@{color}'
-  }
-```
-> **Tip**: As you see, `for` block must use `indention` to place inside of `table` tag and `tr` tag must also use `indention` to tell that it's inside of the `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere. 
-
-> *It's not possible to mix JavaScript and HTML in one line **yet***. 
-
----
-###Adding dynamic value to markup
-As you saw in `Example 1`, we are using `@{}` for adding code values to our markup. Inside the `Dynamic value block`, you can use any expression that returns a value. All of following expressions are acceptable:
-#####**Example 2**:
-######*ex-2.mel*  
-    span '1+1=@{1+1}'
-    '@{parsInt("1")}'
-    '@{1===1? true : false}'
-    input name="@{username}"
-
----
-###Sending data to markup from outside
-`Middle Gear` is supporting `MVC` architecture. It means you can send `Model` to a Melody `View`.
-#####**Example 3**:
-######*app.js*  
-```
-var viewEngine = new(require('middle-gear'))({
-  rootDirname: __dirname
-});
-var markup = viewEngine.renderFile('ex-3', {
-  msg: 'This message is from Controller'
-});
-console.log(markup);
-```
-######*ex-3.mel*  
-```
-var __ = model;
 div
-  span "@{__.msg}"
-```
-> **Tip**: We should use `model` object for accessing the data that has been sent by `app.js`.
-
----
-###Using layout
-See Hello world sample.
-
----
-
-###Third party framework support
-####**Angular 2.0**
-Current version of `Middle Gear` compiler supports `Angular 2` syntax and you can use `Angular 2` without a problem.
-
-#####**Example 4**:
-######*ex-4.mel*  
-```
-var show = true;
-div
-    span *ng-if="@{show}" #is-angular
+    span *ng-if="expression" #localValue [(two-way-binding)]="prop"
         'Hello Angular 2.0'
 ```
 
-####**SailsJs 0.11**
-For setting `Middle Gear` as `Sails`' view engine, modify `view.js` file from `config folder` to look like this:
+#### SailsJs 0.11
+For setting *Middle Gear* as **SailsJs** view engine, modify `view.js` file from `config folder` to look like this:
 
-######*view.js* 
 ```
+//view.js
 module.exports.views = {
    engine: {
       ext: 'mel',
@@ -158,18 +94,11 @@ module.exports.views = {
  };
 ```
 
-####**Lodash 3.10**
-`Middle Gear` compiles `Melody` in Sand Box mode, so you can't access to your npm packages that you have added to your project. However `lodash` is injected to view by default, so you can use it in your view code.
+#### Lodash 3.10
+*Middle Gear* compiles *Melody language* in Sand Box mode, so you can't access to your **npm packages** that you have added to your project. However **lodash** is injected to view by default, so you can use it in your view code.
 
-#####**Example 5**:
-######*ex-5.mel*  
 ```
-var colors = [
-    'Blue',
-    'Green',
-    'Red',
-];
-
+var colors = ['Blue', 'Green', 'Red'];
 table
     _.each(colors, function(color) {
         tr
@@ -177,24 +106,35 @@ table
     })
 ```
 
------
-####**Shorthands**
+#### Shorthands
 Melody supports shorthand for writing tags:
 
-*Use `#` after tag's name for adding id:* 
+* Use `#` after tag's name for adding id:
 ```
 input#username
 input #username
 ```
 
-*Use `.` after tag's name or id for adding class:* 
+* Use `.` after tag's name or id for adding class:
 ```
 input #username .class1 .class2
 input.class1.class2#username 
 ```
 
 ---
-*Any suggestion?*
+### What about *Controller* code?
+```
+var viewEngine = new(require('middle-gear'))({
+  rootDirname: __dirname
+});
+var markup = viewEngine.renderFile('index.mel', {
+  msg: 'This message is from Controller'
+});
+console.log(markup);
+```
+**Note**: `.mel` prefix is abbreviation for **Melody**. You can drop it in `src` attributes and `renderFile` method but for it your file must perfixed with `.mel`.
 
+---
+*Any suggestion?*
 *Have fun! :)*
 *Behzad Eshan*

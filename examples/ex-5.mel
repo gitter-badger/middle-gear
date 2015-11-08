@@ -1,9 +1,4 @@
-var colors = [
-    'Blue',
-    'Green',
-    'Red',
-];
-
+var colors = ['Blue', 'Green', 'Red'];
 table
     _.each(colors, function(color) {
         tr
