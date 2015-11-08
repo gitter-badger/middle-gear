@@ -24,7 +24,7 @@ table
         td '@{colors[i]}'
   }
 ```
-**Tip**: As you see, the `for` block is using `indention` to place inside of the `table` tag and the `tr` tag is doing the same to tell it's inside of the `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere.
+**Tip**: As you see, we have used `indention` to place the `for` expression inside of the `table` tag. We have done the same, for the `tr` to tell it's inside of the `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere.
 
 **Note:** It's not possible to mix JavaScript and HTML in one line.
 
