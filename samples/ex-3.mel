@@ -1,3 +1,0 @@
-	var __ = model;
-    div
-	    span "@{__.msg}"

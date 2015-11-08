@@ -41,7 +41,7 @@ layout src="layout.mel"
 component name="content"
 	span "Hello world!"
 ```
-> **Tip:**:  The shorthand syntax is named **Melody Language** and `.mel` prefix is its abbreviation. You can drop .mel in `src` attributes and for it your file must perfixed with `.mel`. 
+> **Tip:**  The shorthand syntax is named **Melody Language** and `.mel` prefix is its abbreviation. You can drop .mel in `src` attributes and for it your file must perfixed with `.mel`. 
 
 ----------
 ###Let's Start
@@ -91,7 +91,7 @@ As you saw in the `Example 1`, we are using `@{}` for adding code values to our 
 #####**Example 2**:
 ######*ex-2.mel*	
     '@{1+1}'
-    '@{parsInt('1')}'
+    '@{parsInt("1")}'
     '@{1===1? true : false}'
 
 ---
