@@ -160,7 +160,8 @@ module.exports.views = {
 `Middle Gear` compiles `Melody` in Sand Box mode, so you can't access to your npm packages that you have added to your project. However `lodash` is injected to view by default, so you can use it in your view code.
 
 #####**Example 5**:
-######*ex-5.mel*	```
+######*ex-5.mel*	
+```
 var colors = [
     'Blue',
     'Green',
