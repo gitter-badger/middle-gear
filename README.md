@@ -122,7 +122,7 @@ id="dropdownMenu2",
 data-toggle="dropdown",
 aria-haspopup="true" aria-expanded="false"
 ```
-**Note**: As you see, it's not needed to follow `indention` rule for beaked lines.
+**Note**: As you see, it's not needed to follow `indention` rule for broken lines.
 
 ### Plain text
 Browsers eliminate whitespaces but not *Middle Gear*. Everything that is written inside quote marks will be rendered in the same way.
