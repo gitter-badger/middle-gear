@@ -62,49 +62,6 @@ layout src="layout.mel"
 sector name="content"
   span "Hello world!"
 ```
-### Third party framework support
-#### **Angular**
-Current version of *Middle Gear* compiler supports **Angular 2.0** syntax.
-
-```
-div
-    span *ng-if="expression" #localValue [(two-way-binding)]="prop"
-        'Hello Angular 2.0'
-```
-
-#### SailsJs 0.11
-For setting *Middle Gear* as **SailsJs** view engine, modify `view.js` file from `config folder` to look like this:
-
-```
-//view.js
-module.exports.views = {
-   engine: {
-      ext: 'mel',
-      fn: function(filename, options, fn) {
-         var path = require('path');
-         var basename = path.basename(filename);
-         var viewEngine = new (require('middle-gear'))({
-            rootDirname: path.dirname(filename)
-         });
-         if(!options.model) options.model = {};
-         var markup = viewEngine.renderFile(basename, options.model);
-         fn(null, markup);
-      }
-   }
- };
-```
-
-#### Lodash 3.10
-*Middle Gear* compiles *Melody language* in Sand Box mode, so you can't access to your **npm packages** that you have added to your project. However **lodash** is injected to view by default, so you can use it in your view code.
-
-```
-var colors = ['Blue', 'Green', 'Red'];
-table
-    _.each(colors, function(color) {
-        tr
-            td '@{color}'
-    })
-```
 ### Putting tags in a same line
 Use `>` for separating tags that are in the same line:
 ```
@@ -162,6 +119,49 @@ input.class1.class2#username
 ### Commenting
 Like JavaScript, can use `//` and `/*..*/` for commenting.
 
+### Third party framework support
+#### **Angular**
+Current version of *Middle Gear* compiler supports **Angular 2.0** syntax.
+
+```
+div
+    span *ng-if="expression" #localValue [(two-way-binding)]="prop"
+        'Hello Angular 2.0'
+```
+
+#### SailsJs 0.11
+For setting *Middle Gear* as **SailsJs** view engine, modify `view.js` file from `config folder` to look like this:
+
+```
+//view.js
+module.exports.views = {
+   engine: {
+      ext: 'mel',
+      fn: function(filename, options, fn) {
+         var path = require('path');
+         var basename = path.basename(filename);
+         var viewEngine = new (require('middle-gear'))({
+            rootDirname: path.dirname(filename)
+         });
+         if(!options.model) options.model = {};
+         var markup = viewEngine.renderFile(basename, options.model);
+         fn(null, markup);
+      }
+   }
+ };
+```
+
+#### Lodash 3.10
+*Middle Gear* compiles *Melody language* in Sand Box mode, so you can't access to your **npm packages** that you have added to your project. However **lodash** is injected to view by default, so you can use it in your view code.
+
+```
+var colors = ['Blue', 'Green', 'Red'];
+table
+    _.each(colors, function(color) {
+        tr
+            td '@{color}'
+    })
+```
 ### What about *Controller* code?
 ```
 var viewEngine = new(require('middle-gear'))({
