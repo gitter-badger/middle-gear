@@ -1,0 +1,27 @@
+{
+  "name": "middle-gear",
+  "version": "0.1.0",
+  "description": "A View Engine for NodeJs Web applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intellibits/middle-gear.git"
+  },
+  "keywords": [
+    "nodejs template engin",
+    "nodjs view engine",
+    "shorthand html"
+  ],
+  "author": "Behzad Eshan <behzad.eshan@intellibits.org>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/intellibits/middle-gear/issues"
+  },
+  "homepage": "https://github.com/intellibits/middle-gear#readme"
+}

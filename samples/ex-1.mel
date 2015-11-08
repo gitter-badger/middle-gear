@@ -1,0 +1,12 @@
+var colors = [
+	'Blue',
+	'Green',
+	'Red',
+];
+layout src="layout"
+sector name="content"
+	table
+		for (var i = 0; i < colors.length; i++) {
+			tr
+			td '@{colors[i]}'
+		}

@@ -1,0 +1,5 @@
+html
+	head
+		title 'Middle Gear - Hello World!'
+	body
+		load name="content"

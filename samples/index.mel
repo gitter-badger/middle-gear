@@ -1,0 +1,3 @@
+layout src="layout.mel"
+sector name="content"
+	span "Hello world!"
