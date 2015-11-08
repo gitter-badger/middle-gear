@@ -8,7 +8,7 @@ v0.1.2
 `npm install middle-gear`
 
 ### Let's Start
-*Middle Gear* is using a language named **Melody**. But you will not forced to learn a new language. **Melody** is **HTML** plus **JavaScript**. With *Melody* You can **mix** JavaScript with HTML easily. There are a few simple rules to write *Melody*:
+*Middle Gear* has provided a language named **Melody**. But you will not forced to learn a new language. **Melody** is **HTML** plus **JavaScript**. With *Melody* You can **mix** JavaScript with HTML easily. There are a few simple rules to write *Melody*:
 
 * Drop `<`, `>` or `/>` from your start tags (ex. ```</div> <br/>```).
 * Remove end tags (ex. ```</div>```) entirely.
@@ -21,7 +21,7 @@ var colors = ['Blue','Green','Red'];
 table
   for (var i = 0; i < colors.length; i++) {    
       tr
-      td '@{colors[i]}'
+        td '@{colors[i]}'
   }
 ```
 **Tip**: As you see, the `for` block is using `indention` to place inside of `table` tag and `tr` tag doing the same to tell that it's inside of the `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere.
