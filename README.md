@@ -87,7 +87,7 @@ table
 
 ---
 ###Adding dynamic value to markup
-As you saw in the `Example 1`, we are using `@{}` for adding code values to our markup. Inside the `Dynamic value block`, you can use any expression that returns a value. All of following expressions are acceptable:
+As you saw in `Example 1`, we are using `@{}` for adding code values to our markup. Inside the `Dynamic value block`, you can use any expression that returns a value. All of following expressions are acceptable:
 #####**Example 2**:
 ######*ex-2.mel*  
     span '1+1=@{1+1}'
@@ -110,10 +110,11 @@ var markup = viewEngine.renderFile('ex-3', {
 console.log(markup);
 ```
 ######*ex-3.mel*  
-  var __ = model;
-    div
-      span "@{__.msg}"
-     
+```
+var __ = model;
+div
+  span "@{__.msg}"
+```
 > **Tip**: As you see for accessing to the data that has came from `app`, we should use `model` object. 
 
 ---
@@ -122,9 +123,9 @@ See Hello world sample.
 
 ---
 
-###Third party frameworks support
+###Third party framework support
 ####**Angular 2.0**
-Current version of `Middle Gear` compiler, supports `Angular 2` syntax and you can use `Angular 2` without problem.
+Current version of `Middle Gear` compiler supports `Angular 2` syntax and you can use `Angular 2` without problem.
 
 #####**Example 4**:
 ######*ex-4.mel*  
