@@ -21,7 +21,7 @@ middle-gear-hello-world
 ######*app.js*
 ```
 var viewEngine = new(require('middle-gear'))({
-	rootDirname: __dirname
+    rootDirname: __dirname
 });
 var markup = viewEngine.renderFile('index.mel');
 console.log(markup);
@@ -29,17 +29,17 @@ console.log(markup);
 ######*layout.mel*
 ```
 html
-	head
-		title 'Middle Gear - Hello World'
-	body
-		load name="content"
+    head
+        title 'Middle Gear - Hello World'
+    body
+        load name="content"
 ```
 
 ######*index.mel*
 ```
 layout src="layout.mel"
 component name="content"
-	span "Hello world!"
+    span "Hello world!"
 ```
 > **Tip:**  The shorthand syntax is named **Melody Language** and `.mel` prefix is its abbreviation. You can drop .mel in `src` attributes and for it your file must perfixed with `.mel`. 
 
@@ -60,7 +60,7 @@ You can **mix** `JavaScript` with `Melody`. This is one of the unique and powerf
 ######*app.js*
 ```
 var viewEngine = new(require('middle-gear'))({
-	rootDirname: __dirname
+    rootDirname: __dirname
 });
 var markup = viewEngine.renderFile('ex-1');
 console.log(markup);
@@ -68,18 +68,18 @@ console.log(markup);
 ######*ex-1.mel*
 ```
 var colors = [
-	'Blue',
-	'Green',
-	'Red',
+    'Blue',
+    'Green',
+    'Red',
 ];
 
 table
-	for (var i = 0; i < colors.length; i++) {
-		var color = colors[i];
-		
-		tr
-			td '@{color}'
-	}
+    for (var i = 0; i < colors.length; i++) {
+        var color = colors[i];
+        
+        tr
+            td '@{color}'
+    }
 ```
 > **Tip**: As you see, `for` block must use `indention` to place inside of `table` tag and `tr` tag must also use `indention` to tell that it's inside of the `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere. 
 
@@ -89,30 +89,31 @@ table
 ###Adding dynamic value to markup
 As you saw in the `Example 1`, we are using `@{}` for adding code values to our markup. Inside the `Dynamic value block`, you can use any expression that returns a value. All of following expressions are acceptable:
 #####**Example 2**:
-######*ex-2.mel*	
+######*ex-2.mel*    
     '@{1+1}'
     '@{parsInt("1")}'
     '@{1===1? true : false}'
+    input name="@{username}"
 
 ---
 ###Sending data to markup from outside
 `Middle Gear` is supporting `MVC` architecture. It means you can send `Model` to a Melody `View`.
 #####**Example 3**:
-######*app.js*	
+######*app.js*  
 ```
 var viewEngine = new(require('middle-gear'))({
-	rootDirname: __dirname
+    rootDirname: __dirname
 });
 var markup = viewEngine.renderFile('ex-3', {
-	msg: 'This message is from Controller'
+    msg: 'This message is from Controller'
 });
 console.log(markup);
 ```
-######*ex-3.mel*	
-	var __ = model;
+######*ex-3.mel*    
+    var __ = model;
     div
-	    span "@{__.msg}"
-	   
+        span "@{__.msg}"
+       
 > **Tip**: As you see for accessing to the data that has came from `app`, we should use `model` object. 
 
 ---
@@ -126,7 +127,7 @@ See Hello world sample.
 Current version of `Middle Gear` compiler, supports `Angular 2` syntax and you can use `Angular 2` without problem.
 
 #####**Example 4**:
-######*ex-4.mel*	
+######*ex-4.mel*    
 ```
 var show = true;
 div
@@ -137,7 +138,7 @@ div
 ####**SailsJs 0.11**
 For setting `Middle Gear` as `Sails`' view engine, modify `view.js` file from `config folder` to look like this:
 
-######*view.js*	
+######*view.js* 
 ```
 module.exports.views = {
    engine: {
@@ -160,7 +161,7 @@ module.exports.views = {
 `Middle Gear` compiles `Melody` in Sand Box mode, so you can't access to your npm packages that you have added to your project. However `lodash` is injected to view by default, so you can use it in your view code.
 
 #####**Example 5**:
-######*ex-5.mel*	
+######*ex-5.mel*    
 ```
 var colors = [
     'Blue',
@@ -177,13 +178,18 @@ table
 
 -----
 ####**Shorthands**
-There are some shorthand for writing tags:
->- use `#` after tag's name for adding id: 
-*example: **input #username***
+Melody supports shorthand for writing tags:
+*Use `#` after tag's name for adding id:* 
+```
+input#username
+input #username
+```
 
->- use `.` after tag's name for adding class: 
-*example: **input #username .class1.class2***
-
+*Use `.` after tag's name or id for adding class:* 
+```
+input #username .class1 .class2
+input.class1.class2#username 
+```
 
 ---
 *Any suggestion?*
