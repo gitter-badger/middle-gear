@@ -1,4 +1,4 @@
 var show = true;
 div
-    span *ng-if="@{show}"
+    span *ng-if="@{show}" #is-angular
         'Hello Angular 2.0'

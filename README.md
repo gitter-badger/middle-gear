@@ -116,7 +116,7 @@ console.log(markup);
 > **Tip**: As you see for accessing to the data that has came from `app`, we should use `model` object. 
 
 ---
-###Using laytout
+###Using layout
 See Hello world sample.
 
 ---
@@ -130,8 +130,8 @@ Current version of `Middle Gear` compiler, supports `Angular 2` syntax and you c
 ```
 var show = true;
 div
-	span *ng-if="@{show}"
-		'Hello Angular 2.0'
+    span *ng-if="@{show}" #is-angular
+        'Hello Angular 2.0'
 ```
 
 ####**SailsJs 0.11**
