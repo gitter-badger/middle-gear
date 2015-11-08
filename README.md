@@ -115,7 +115,7 @@ var __ = model;
 div
   span "@{__.msg}"
 ```
-> **Tip**: As you see for accessing to the data that has came from `app`, we should use `model` object. 
+> **Tip**: We should use `model` object for accessing the data that has been sent by `app.js`.
 
 ---
 ###Using layout
@@ -125,7 +125,7 @@ See Hello world sample.
 
 ###Third party framework support
 ####**Angular 2.0**
-Current version of `Middle Gear` compiler supports `Angular 2` syntax and you can use `Angular 2` without problem.
+Current version of `Middle Gear` compiler supports `Angular 2` syntax and you can use `Angular 2` without a problem.
 
 #####**Example 4**:
 ######*ex-4.mel*  
