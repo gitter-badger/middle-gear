@@ -12,9 +12,9 @@ v0.1.2
 
 * Drop `<`, `>` or `/>` from your start tags (ex. ```</div> <br/>```).
 * Remove end tags (ex. ```</div>```) entirely.
+* Place tag's text (ex. ```<span>It's Text</span>```) inside quote marks `'` or `"`.
 * Use `indention` for applying HTML hierarchy. 
 * When putting HTML tags inside a JavaScript block apply indention rule too. 
-* Place tag's text (ex. ```<span>It's Text</span>```) inside quote marks `'` or `"`.
 
 ```
 var colors = ['Blue','Green','Red'];
@@ -45,7 +45,7 @@ var __ = model;
 div
   span "@{__.msg}"
 ```
-**Note**: As you see We have used `model` object for accessing the data that has been sent from `controller`.
+**Note**: As you see we have used `model` object for accessing the data that has been sent from `controller`.
 
 ### Inheritance
 ```
