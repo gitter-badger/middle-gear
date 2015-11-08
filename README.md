@@ -14,7 +14,7 @@ v0.1.2
 * Remove end tags (ex. ```</div>```) entirely.
 * Place tag's text (ex. ```<span>It's Text</span>```) inside quote marks `'` or `"`.
 * Use `indention` for applying HTML hierarchy. 
-* When putting HTML tags inside a JavaScript block apply indention rule too. 
+* When putting HTML tags inside a JavaScript block apply `indention` rule too. 
 
 ```
 var colors = ['Blue','Green','Red'];
