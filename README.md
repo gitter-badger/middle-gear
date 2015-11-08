@@ -38,7 +38,7 @@ html
 ######*index.mel*
 ```
 layout src="layout.mel"
-component name="content"
+sector name="content"
   span "Hello world!"
 ```
 > **Tip:**  The shorthand syntax is named **Melody Language** and `.mel` prefix is its abbreviation. You can drop .mel in `src` attributes and for it your file must perfixed with `.mel`. 
