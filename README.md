@@ -6,7 +6,7 @@ v0.1.2
 * [Installation](#installation)
 * [Let's Start](#lets-start)
 * [Adding dynamic value to markup](#adding-dynamic-value-to-markup)
-* [Sending data to markup from Controller](#sending-data-to-markup-from-controller)
+* [Sending external data to markup](#sending-external-data-to-markup)
 * [Inheritance](#inheritance)
 * [Putting tags in a same line](#putting-tags-in-a-same-line)
 * [Breaking line into multiple lines](#breaking-line-into-multiple-lines)
@@ -57,7 +57,7 @@ span '1+1=@{1+1}'
 input name="@{username}"
 ```
 
-### Sending data to markup from *Controller*
+### Sending external data to markup
 *Middle Gear* is supporting **MVC** architecture. It means you can send **Model** to a Melody **View**.
 ```
 div
