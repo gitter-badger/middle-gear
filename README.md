@@ -1,7 +1,7 @@
-v0.1.3
+v0.1.4
 
 # Middle Gear
-**Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, don't use it in production please.
+**Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, so please don't use it in production.
 
 * [Installation](#installation)
 * [Let's Start](#lets-start)
@@ -27,7 +27,7 @@ v0.1.3
 `npm install middle-gear`
 
 ### Let's Start
-*Middle Gear* has provided a language named **Melody**. But you will not forced to learn a new language. **Melody** is **HTML** plus **JavaScript**. With *Melody* You can **mix** JavaScript with HTML easily. There are a few simple rules to write *Melody*:
+*Middle Gear* has provided a language named **Melody**. But you will not be forced to learn a new language. **Melody** is **HTML** plus **JavaScript**. With *Melody* You can **mix** JavaScript with HTML easily. There are a few simple rules to write *Melody*:
 
 * Drop `<`, `>` or `/>` from your start tags (ex. ```</div> <br/>```).
 * Remove end tags (ex. ```</div>```) entirely.
@@ -43,7 +43,7 @@ table
         td '@{colors[i]}'
   }
 ```
-**Tip**: As you see, we have used `indention` to place the `for` expression inside of the `table` tag. We have done the same, for the `tr` to tell it's inside of the `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere.
+**Tip**: As you can see, we have used `indention` to place the `for` expression inside of the `table` tag. We have done the same for  `tr` to tell that it's inside of  `for`. Note that placing a tag inside of code block(`{` ,`}`) will not make it as a subset of that code block, so using `indention` is a must everywhere.
 
 **Note:** It's not possible to mix JavaScript and HTML in one line.
 
@@ -63,7 +63,7 @@ input name="@{username}"
 div
   span "@{model.msg}"
 ```
-**Note**: As you see we have used `model` object for accessing the data that has been sent from `controller`.
+**Note**: As you can see we have used `model` object for accessing the data that has been sent from `controller`.
 
 ### Inheritance
 ```
@@ -110,7 +110,7 @@ text"
 ```
 
 ### Adding Script and Style blocks to markup
-Adding *Script* and *Style* is as same as other tags. 
+Adding *Script* and *Style* is the same as other tags. 
 ```
 Style
   body {
@@ -163,7 +163,7 @@ input.class1.class2#username
 ```
 
 ### Commenting
-Like JavaScript, can use `//` and `/*..*/` for commenting.
+Like JavaScript, you can use `//` and `/*..*/` for commenting.
 
 ### Third party framework support
 #### **Angular**
@@ -198,7 +198,7 @@ module.exports.views = {
 ```
 
 #### Lodash
-*Middle Gear* compiles *Melody language* in Sand Box mode, so you can't access to your **npm packages** that you have added to your project. However **lodash** is injected to view by default, so you can use it in your view code.
+*Middle Gear* compiles *Melody language* in Sand Box mode, so you can't access your **npm packages** that you have added to your project. However **lodash** is injected to view by default, so you can use it in your view code.
 
 ```
 var colors = ['Blue', 'Green', 'Red'];
@@ -220,7 +220,7 @@ var markup = viewEngine.renderFile('ex-1', {
 });
 console.log(markup);
 ```
-**Note**: `.mel` prefix is abbreviation for **Melody**. You can drop it in `src` attributes and `renderFile` method but for it your file must perfixed with `.mel`.
+**Note**: `.mel` prefix is abbreviation for **Melody**. You can drop it in `src` attributes and `renderFile` method, but the file must be prefixed with `.mel`.
 
 ---
 *Any suggestion?*
