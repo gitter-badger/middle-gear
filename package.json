@@ -1,6 +1,6 @@
 {
   "name": "middle-gear",
-  "version": "0.1.4",
+  "version": "0.1.4.1",
   "description": "A View Engine for NodeJs Web applications.",
   "main": "index.js",
   "scripts": {
