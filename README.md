@@ -1,9 +1,11 @@
 v0.1.4
 
-# Middle Gear
 **Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, so please don't use it in production.
 
-* [Installation](#installation)
+### Installation
+
+`npm install middle-gear`
+
 * [Let's Start](#lets-start)
 * [Adding dynamic value to markup](#adding-dynamic-value-to-markup)
 * [Sending external data to markup](#sending-external-data-to-markup)
@@ -16,15 +18,11 @@ v0.1.4
 * [Using custom tags in Melody](#using-custom-tags-in-melody)
 * [Shorthands](#shorthands)
 * [Commenting](#commenting)
+* [What about Controller code?](#what-about-controller-code)
 * [Third party framework support](#third-party-framework-support)
   * [Angular](#angular)
   * [SailsJs](#sailsjs)
   * [Lodash](#lodash)
-* [What about Controller code?](#what-about-controller-code)
-
-### Installation
-
-`npm install middle-gear`
 
 ### Let's Start
 *Middle Gear* has provided a language named **Melody**. But you will not be forced to learn a new language. **Melody** is **HTML** plus **JavaScript**. With *Melody* You can **mix** JavaScript with HTML easily. There are a few simple rules to write *Melody*:
@@ -165,6 +163,19 @@ input.class1.class2#username
 ### Commenting
 Like JavaScript, you can use `//` and `/*..*/` for commenting.
 
+### What about Controller code?
+```
+var viewEngine = new(require('middle-gear'))({
+  rootDirname: __dirname
+});
+var markup = viewEngine.renderFile('ex-1', {
+  msg: 'This message is from Controller',
+  lang: 'en'
+});
+console.log(markup);
+```
+**Note**: `.mel` prefix is abbreviation for **Melody**. You can drop it in `src` attributes and `renderFile` method, but the file must be prefixed with `.mel`.
+
 ### Third party framework support
 #### **Angular**
 Current version of *Middle Gear* compiler supports **Angular 2.0** syntax.
@@ -208,16 +219,3 @@ table
             td '@{color}'
     })
 ```
-
-### What about *Controller* code?
-```
-var viewEngine = new(require('middle-gear'))({
-  rootDirname: __dirname
-});
-var markup = viewEngine.renderFile('ex-1', {
-  msg: 'This message is from Controller',
-  lang: 'en'
-});
-console.log(markup);
-```
-**Note**: `.mel` prefix is abbreviation for **Melody**. You can drop it in `src` attributes and `renderFile` method, but the file must be prefixed with `.mel`.
