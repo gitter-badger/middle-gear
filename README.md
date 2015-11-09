@@ -1,4 +1,4 @@
-v0.1.4.1
+v0.1.4-1
 
 # Middle Gear
 **Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, so please don't use it in production.
