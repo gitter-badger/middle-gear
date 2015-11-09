@@ -122,21 +122,21 @@ Script
 ### Server Side JavaScript inside Script and Style tags
 You can control the rendering of the client-side JavaScript and also CSS using *Melody*. For this you should explicitly express that you are writing server side JavaScript expression by adding `\` to the start of your code lines.
 ```
-var en_msg="Hello world!",
-  fa_msg= درود بر شما!;
+var en_msg="Hello!",
+  es_msg= 'Hola!';
 
 Style
   body {
     \if(model.lang==='en')
-      font: "tahoma"
-    \else if(model.lang==="fa")
-      font: "b roya"
+      font: "lucida grande"
+    \else if(model.lang==="es")
+      font: "ubuntu"
   }
 Script  
   \if(model.lang==='en')
     alert('@{en_msg}')
-  \else if(model.lang==="fa")
-    alert('@{fa_msg}')
+  \else if(model.lang==="es")
+    alert('@{es_msg}')
 ```
 ### Using custom tags in Melody
 For adding non-HTML5 tags to your markup you should explicitly express it using `>` before the name of tag.
@@ -221,8 +221,3 @@ var markup = viewEngine.renderFile('ex-1', {
 console.log(markup);
 ```
 **Note**: `.mel` prefix is abbreviation for **Melody**. You can drop it in `src` attributes and `renderFile` method, but the file must be prefixed with `.mel`.
-
----
-*Any suggestion?*
-*Have fun! :)*
-*Behzad Eshan*
