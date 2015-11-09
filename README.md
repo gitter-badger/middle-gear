@@ -18,7 +18,7 @@ v0.1.3
 * [Commenting](#commenting)
 * [Third party framework support](#third-party-framework-support)
   * [Angular](#angular)
-  * [SailsJs](#sailsJs)
+  * [SailsJs](#sailsjs)
   * [Lodash](#lodash)
 * [What about Controller code?](#what-about-controller-code)
 
