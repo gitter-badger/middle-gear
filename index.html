@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Middle Gear : View Engine for NodeJs Web applications.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Middle Gear</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/intellibits/middle-gear">View on GitHub</a>
+
+          <h1 id="project_title">Middle Gear</h1>
+          <h2 id="project_tagline">View Engine for NodeJs Web applications.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/intellibits/middle-gear/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/intellibits/middle-gear/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>v0.1.4</p>
+
+<p><strong>Middle Gear</strong> is a View Engine for NodeJs Web applications. It's in <strong>beta</strong> version, so please don't use it in production.</p>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#lets-start">Let's Start</a></li>
+<li><a href="#adding-dynamic-value-to-markup">Adding dynamic value to markup</a></li>
+<li><a href="#sending-external-data-to-markup">Sending external data to markup</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#putting-tags-in-a-same-line">Putting tags in a same line</a></li>
+<li><a href="#breaking-line-into-multiple-lines">Breaking line into multiple lines</a></li>
+<li><a href="#plain-text">Plain text</a></li>
+<li><a href="#adding-script-and-style-blocks-to-markup">Adding Script and Style blocks to markup</a></li>
+<li><a href="#server-side-javascript-inside-script-and-style-tags">Server Side JavaScript inside Script and Style tags</a></li>
+<li><a href="#using-custom-tags-in-melody">Using custom tags in Melody</a></li>
+<li><a href="#shorthands">Shorthands</a></li>
+<li><a href="#commenting">Commenting</a></li>
+<li>
+<a href="#third-party-framework-support">Third party framework support</a>
+
+<ul>
+<li><a href="#angular">Angular</a></li>
+<li><a href="#sailsjs">SailsJs</a></li>
+<li><a href="#lodash">Lodash</a></li>
+</ul>
+</li>
+<li><a href="#what-about-controller-code">What about Controller code?</a></li>
+</ul>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p><code>npm install middle-gear</code></p>
+
+<h3>
+<a id="lets-start" class="anchor" href="#lets-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let's Start</h3>
+
+<p><em>Middle Gear</em> has provided a language named <strong>Melody</strong>. But you will not be forced to learn a new language. <strong>Melody</strong> is <strong>HTML</strong> plus <strong>JavaScript</strong>. With <em>Melody</em> You can <strong>mix</strong> JavaScript with HTML easily. There are a few simple rules to write <em>Melody</em>:</p>
+
+<ul>
+<li>Drop <code>&lt;</code>, <code>&gt;</code> or <code>/&gt;</code> from your start tags (ex. <code>&lt;/div&gt; &lt;br/&gt;</code>).</li>
+<li>Remove end tags (ex. <code>&lt;/div&gt;</code>) entirely.</li>
+<li>Place tag's text (ex. <code>&lt;span&gt;It's Text&lt;/span&gt;</code>) inside quote marks <code>'</code> or <code>"</code> or even backtick <code>`</code>.</li>
+<li>Use <code>indention</code> for applying HTML hierarchy. </li>
+<li>When putting HTML tags inside a JavaScript block apply <code>indention</code> rule too. </li>
+</ul>
+
+<pre><code>var colors = ['Blue','Green','Red'];
+table
+  for (var i = 0; i &lt; colors.length; i++) {    
+      tr
+        td '@{colors[i]}'
+  }
+</code></pre>
+
+<p><strong>Tip</strong>: As you can see, we have used <code>indention</code> to place the <code>for</code> expression inside of the <code>table</code> tag. We have done the same for  <code>tr</code> to tell that it's inside of  <code>for</code>. Note that placing a tag inside of code block(<code>{</code> ,<code>}</code>) will not make it as a subset of that code block, so using <code>indention</code> is a must everywhere.</p>
+
+<p><strong>Note:</strong> It's not possible to mix JavaScript and HTML in one line.</p>
+
+<h3>
+<a id="adding-dynamic-value-to-markup" class="anchor" href="#adding-dynamic-value-to-markup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding dynamic value to markup</h3>
+
+<p>As you see in above example, we are using <code>@{}</code> for adding dynamic values to our markup. Inside the <strong>Dynamic value block</strong>, you can use any expression that returns a value. All of following expressions are acceptable:</p>
+
+<pre><code>span '1+1=@{1+1}'
+'@{parsInt("1")}'
+'@{1===1? true : false}'
+input name="@{username}"
+</code></pre>
+
+<h3>
+<a id="sending-external-data-to-markup" class="anchor" href="#sending-external-data-to-markup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sending external data to markup</h3>
+
+<p><em>Middle Gear</em> is supporting <strong>MVC</strong> architecture. It means you can send <strong>Model</strong> to a Melody <strong>View</strong>.</p>
+
+<pre><code>div
+  span "@{model.msg}"
+</code></pre>
+
+<p><strong>Note</strong>: As you can see we have used <code>model</code> object for accessing the data that has been sent from <code>controller</code>.</p>
+
+<h3>
+<a id="inheritance" class="anchor" href="#inheritance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inheritance</h3>
+
+<pre><code>//layout.mel
+html
+  head
+    title 'Middle Gear - Hello World'
+  body
+    load name="content"
+</code></pre>
+
+<pre><code>//index.mel
+layout src="layout.mel"
+sector name="content"
+  span "Hello world!"
+</code></pre>
+
+<h3>
+<a id="putting-tags-in-a-same-line" class="anchor" href="#putting-tags-in-a-same-line" aria-hidden="true"><span class="octicon octicon-link"></span></a>Putting tags in a same line</h3>
+
+<p>Use <code>&gt;</code> for separating tags that are in the same line:</p>
+
+<pre><code>ul.dropdown-menu
+    li &gt; a href="#" 'Action'
+    li &gt; a href="#" 'Another action'
+</code></pre>
+
+<h3>
+<a id="breaking-line-into-multiple-lines" class="anchor" href="#breaking-line-into-multiple-lines" aria-hidden="true"><span class="octicon octicon-link"></span></a>Breaking line into multiple lines</h3>
+
+<p>For doing this, use <code>,</code> at the end of line:</p>
+
+<pre><code>    button.btn.btn-default.dropdown-toggle,
+type="button",
+id="dropdownMenu2",
+data-toggle="dropdown",
+aria-haspopup="true" aria-expanded="false"
+</code></pre>
+
+<p><strong>Note</strong>: As you see, it's not needed to follow <code>indention</code> rule for the broken lines.</p>
+
+<h3>
+<a id="plain-text" class="anchor" href="#plain-text" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plain text</h3>
+
+<p>Browsers eliminate whitespaces but not <em>Middle Gear</em>. Everything that is written inside quote marks will be rendered in the same way.</p>
+
+<pre><code>  div
+    pre
+"It's a 
+    multi line
+plain
+text"
+</code></pre>
+
+<h3>
+<a id="adding-script-and-style-blocks-to-markup" class="anchor" href="#adding-script-and-style-blocks-to-markup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Script and Style blocks to markup</h3>
+
+<p>Adding <em>Script</em> and <em>Style</em> is the same as other tags. </p>
+
+<pre><code>Style
+  body {
+    font: "tahoma"
+  }
+Script
+  alert('Hello world!')
+</code></pre>
+
+<h3>
+<a id="server-side-javascript-inside-script-and-style-tags" class="anchor" href="#server-side-javascript-inside-script-and-style-tags" aria-hidden="true"><span class="octicon octicon-link"></span></a>Server Side JavaScript inside Script and Style tags</h3>
+
+<p>You can control the rendering of the client-side JavaScript and also CSS using <em>Melody</em>. For this you should explicitly express that you are writing server side JavaScript expression by adding <code>\</code> to the start of your code lines.</p>
+
+<pre><code>var en_msg="Hello!",
+  es_msg= 'Hola!';
+
+Style
+  body {
+    \if(model.lang==='en')
+      font: "lucida grande"
+    \else if(model.lang==="es")
+      font: "ubuntu"
+  }
+Script  
+  \if(model.lang==='en')
+    alert('@{en_msg}')
+  \else if(model.lang==="es")
+    alert('@{es_msg}')
+</code></pre>
+
+<h3>
+<a id="using-custom-tags-in-melody" class="anchor" href="#using-custom-tags-in-melody" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using custom tags in Melody</h3>
+
+<p>For adding non-HTML5 tags to your markup you should explicitly express it using <code>&gt;</code> before the name of tag.</p>
+
+<pre><code>div
+  &gt; custom-tag 
+</code></pre>
+
+<h3>
+<a id="shorthands" class="anchor" href="#shorthands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shorthands</h3>
+
+<p>Melody supports shorthand for writing tags:</p>
+
+<ul>
+<li>Use <code>#</code> after tag's name for adding id:</li>
+</ul>
+
+<pre><code>input#username
+input #username
+</code></pre>
+
+<ul>
+<li>Use <code>.</code> after tag's name or id for adding class:</li>
+</ul>
+
+<pre><code>input #username .class1 .class2
+input.class1.class2#username 
+</code></pre>
+
+<h3>
+<a id="commenting" class="anchor" href="#commenting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commenting</h3>
+
+<p>Like JavaScript, you can use <code>//</code> and <code>/*..*/</code> for commenting.</p>
+
+<h3>
+<a id="third-party-framework-support" class="anchor" href="#third-party-framework-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third party framework support</h3>
+
+<h4>
+<a id="angular" class="anchor" href="#angular" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Angular</strong>
+</h4>
+
+<p>Current version of <em>Middle Gear</em> compiler supports <strong>Angular 2.0</strong> syntax.</p>
+
+<pre><code>div
+    span *ng-if="expression" #localValue [(two-way-binding)]="prop"
+        'Hello Angular 2.0'
+</code></pre>
+
+<h4>
+<a id="sailsjs" class="anchor" href="#sailsjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>SailsJs</h4>
+
+<p>For setting <em>Middle Gear</em> as <strong>SailsJs</strong> view engine, modify <code>view.js</code> file from <code>config folder</code> to look like this:</p>
+
+<pre><code>//view.js
+module.exports.views = {
+   engine: {
+      ext: 'mel',
+      fn: function(filename, options, fn) {
+         var path = require('path');
+         var basename = path.basename(filename);
+         var viewEngine = new (require('middle-gear'))({
+            rootDirname: path.dirname(filename)
+         });
+         if(!options.model) options.model = {};
+         var markup = viewEngine.renderFile(basename, options.model);
+         fn(null, markup);
+      }
+   }
+ };
+</code></pre>
+
+<h4>
+<a id="lodash" class="anchor" href="#lodash" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lodash</h4>
+
+<p><em>Middle Gear</em> compiles <em>Melody language</em> in Sand Box mode, so you can't access your <strong>npm packages</strong> that you have added to your project. However <strong>lodash</strong> is injected to view by default, so you can use it in your view code.</p>
+
+<pre><code>var colors = ['Blue', 'Green', 'Red'];
+table
+    _.each(colors, function(color) {
+        tr
+            td '@{color}'
+    })
+</code></pre>
+
+<h3>
+<a id="what-about-controller-code" class="anchor" href="#what-about-controller-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>What about Controller code?</h3>
+
+<pre><code>var viewEngine = new(require('middle-gear'))({
+  rootDirname: __dirname
+});
+var markup = viewEngine.renderFile('ex-1', {
+  msg: 'This message is from Controller',
+  lang: 'en'
+});
+console.log(markup);
+</code></pre>
+
+<p><strong>Note</strong>: <code>.mel</code> prefix is abbreviation for <strong>Melody</strong>. You can drop it in <code>src</code> attributes and <code>renderFile</code> method, but the file must be prefixed with <code>.mel</code>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Middle Gear maintained by <a href="https://github.com/intellibits">intellibits</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
