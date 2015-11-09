@@ -6,12 +6,12 @@ v0.1.2
 * [Installation](#installation)
 * [Let's Start](#lets-start)
 * [Adding dynamic value to markup](#adding-dynamic-value-to-markup)
-* [Sending data to markup from outside](#sending-data-to-markup-from-outside)
+* [Sending data to markup from Controller](#sending-data-to-markup-from-controller)
 * [Inheritance](#inheritance)
 * [Putting tags in a same line](#putting-tags-in-a-same-line)
 * [Breaking line into multiple lines](#breaking-line-into-multiple-lines)
 * [Plain text](#plain-text)
-* [Using Script and Style blocks](#using-script-and-style-blocks)
+* [Adding Script and Style blocks to markup](#adding-script-and-style-blocks-to-markup)
 * [Server Side JavaScript inside Script and Style tags](#server-side-javascript-inside-script-and-style-tags)
 * [Using custom tags in Melody](#using-custom-tags-in-melody)
 * [Shorthands](#Shorthands)
@@ -57,7 +57,7 @@ span '1+1=@{1+1}'
 input name="@{username}"
 ```
 
-### Sending data to markup from outside
+### Sending data to markup from *Controller*
 *Middle Gear* is supporting **MVC** architecture. It means you can send **Model** to a Melody **View**.
 ```
 div
@@ -109,8 +109,8 @@ plain
 text"
 ```
 
-### Script and Style blocks
-Using *Script* and *Style* is as same as other tags. 
+### Adding Script and Style blocks to markup
+Adding *Script* and *Style* is as same as other tags. 
 ```
 Style
   body {
@@ -124,7 +124,7 @@ You can control the rendering of the client-side JavaScript and also CSS using *
 ```
 var en_msg="Hello world!",
   fa_msg= درود بر شما!;
-  
+
 Style
   body {
     \if(model.lang==='en')
