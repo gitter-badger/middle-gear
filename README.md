@@ -1,9 +1,6 @@
-v0.1.4
-
-**Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, so please don't use it in production.
+v0.1.5
 
 ### Installation
-
 `npm install middle-gear`
 
 * [Let's Start](#lets-start)
@@ -219,3 +216,5 @@ table
             td '@{color}'
     })
 ```
+---
+*Middle Gear is in **beta** version, so please don't use it in production.*
