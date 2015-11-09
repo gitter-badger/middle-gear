@@ -14,12 +14,12 @@ v0.1.2
 * [Adding Script and Style blocks to markup](#adding-script-and-style-blocks-to-markup)
 * [Server Side JavaScript inside Script and Style tags](#server-side-javascript-inside-script-and-style-tags)
 * [Using custom tags in Melody](#using-custom-tags-in-melody)
-* [Shorthands](#Shorthands)
-* [Commenting](#Commenting)
+* [Shorthands](#shorthands)
+* [Commenting](#commenting)
 * [Third party framework support](#third-party-framework-support)
   * [Angular](#angular)
-  * [SailsJs](#SailsJs)
-  * [Lodash](#Lodash)
+  * [SailsJs](#sailsJs)
+  * [Lodash](#lodash)
 * [What about Controller code?](#what-about-Controller-code)
 
 ### Installation
@@ -143,7 +143,6 @@ For adding non-HTML5 tags to your markup you should explicitly express it using 
 ```
 div
   > custom-tag 
-
 ```
 
 ### Shorthands
@@ -212,11 +211,12 @@ table
 
 ### What about *Controller* code?
 ```
-var viewEngine = new(require('middle-gear'))({
+var viewEngine = new(require('../index'))({
   rootDirname: __dirname
 });
-var markup = viewEngine.renderFile('index.mel', {
-  msg: 'This message is from Controller'
+var markup = viewEngine.renderFile('ex-1', {
+  msg: 'This message is from Controller',
+  lang: 'en'
 });
 console.log(markup);
 ```
