@@ -20,7 +20,7 @@ v0.1.2
   * [Angular](#angular)
   * [SailsJs](#sailsJs)
   * [Lodash](#lodash)
-* [What about Controller code?](#what-about-Controller-code)
+* [What about Controller code?](#what-about-controller-code)
 
 ### Installation
 
