@@ -35,8 +35,12 @@
 
 <p><strong>Middle Gear</strong> is a View Engine for NodeJs Web applications. It's in <strong>beta</strong> version, so please don't use it in production.</p>
 
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p><code>npm install middle-gear</code></p>
+
 <ul>
-<li><a href="#installation">Installation</a></li>
 <li><a href="#lets-start">Let's Start</a></li>
 <li><a href="#adding-dynamic-value-to-markup">Adding dynamic value to markup</a></li>
 <li><a href="#sending-external-data-to-markup">Sending external data to markup</a></li>
@@ -49,6 +53,7 @@
 <li><a href="#using-custom-tags-in-melody">Using custom tags in Melody</a></li>
 <li><a href="#shorthands">Shorthands</a></li>
 <li><a href="#commenting">Commenting</a></li>
+<li><a href="#what-about-controller-code">What about Controller code?</a></li>
 <li>
 <a href="#third-party-framework-support">Third party framework support</a>
 
@@ -58,13 +63,7 @@
 <li><a href="#lodash">Lodash</a></li>
 </ul>
 </li>
-<li><a href="#what-about-controller-code">What about Controller code?</a></li>
 </ul>
-
-<h3>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
-
-<p><code>npm install middle-gear</code></p>
 
 <h3>
 <a id="lets-start" class="anchor" href="#lets-start" aria-hidden="true"><span class="octicon octicon-link"></span></a>Let's Start</h3>
@@ -238,6 +237,21 @@ input.class1.class2#username
 <p>Like JavaScript, you can use <code>//</code> and <code>/*..*/</code> for commenting.</p>
 
 <h3>
+<a id="what-about-controller-code" class="anchor" href="#what-about-controller-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>What about Controller code?</h3>
+
+<pre><code>var viewEngine = new(require('middle-gear'))({
+  rootDirname: __dirname
+});
+var markup = viewEngine.renderFile('ex-1', {
+  msg: 'This message is from Controller',
+  lang: 'en'
+});
+console.log(markup);
+</code></pre>
+
+<p><strong>Note</strong>: <code>.mel</code> prefix is abbreviation for <strong>Melody</strong>. You can drop it in <code>src</code> attributes and <code>renderFile</code> method, but the file must be prefixed with <code>.mel</code>.</p>
+
+<h3>
 <a id="third-party-framework-support" class="anchor" href="#third-party-framework-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third party framework support</h3>
 
 <h4>
@@ -286,21 +300,6 @@ table
             td '@{color}'
     })
 </code></pre>
-
-<h3>
-<a id="what-about-controller-code" class="anchor" href="#what-about-controller-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>What about Controller code?</h3>
-
-<pre><code>var viewEngine = new(require('middle-gear'))({
-  rootDirname: __dirname
-});
-var markup = viewEngine.renderFile('ex-1', {
-  msg: 'This message is from Controller',
-  lang: 'en'
-});
-console.log(markup);
-</code></pre>
-
-<p><strong>Note</strong>: <code>.mel</code> prefix is abbreviation for <strong>Melody</strong>. You can drop it in <code>src</code> attributes and <code>renderFile</code> method, but the file must be prefixed with <code>.mel</code>.</p>
       </section>
     </div>
 
