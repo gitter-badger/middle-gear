@@ -217,4 +217,4 @@ table
     })
 ```
 ---
-*Middle Gear is in **beta** version, so please don't use it in production.*
+*Middle Gear is in beta version, so please don't use it in production.*
