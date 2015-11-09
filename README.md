@@ -2,8 +2,23 @@ v0.1.2
 
 # Middle Gear
 **Middle Gear** is a View Engine for NodeJs Web applications. It's in **beta** version, don't use it in production please.
-[Installation]
-[Let's Start]
+
+* [Installation](#installation)
+* [Let's Start](#lets-start)
+* [Adding dynamic value to markup](#adding-dynamic-value-to-markup)
+* [Sending data to markup from outside](#sending-data-to-markup-from-outside)
+* [Inheritance](#inheritance)
+* [Putting tags in a same line](#putting-tags-in-a-same-line)
+* [Breaking line into multiple lines](#breaking-line-into-multiple-lines)
+* [Plain text](#plain-text)
+* [Using custom tags in Melody](#using-custom-tags-in-melody)
+* [Shorthands](#Shorthands)
+* [Commenting](#Commenting)
+* [Third party framework support](#third-party-framework-support)
+  * [Angular](#angular)
+  * [SailsJs](#SailsJs)
+  * [Lodash](#Lodash)
+* [What about Controller code?](#what-about-Controller-code)
 
 ### Installation
 
@@ -131,7 +146,7 @@ div
         'Hello Angular 2.0'
 ```
 
-#### SailsJs 0.11
+#### SailsJs
 For setting *Middle Gear* as **SailsJs** view engine, modify `view.js` file from `config folder` to look like this:
 
 ```
@@ -153,7 +168,7 @@ module.exports.views = {
  };
 ```
 
-#### Lodash 3.10
+#### Lodash
 *Middle Gear* compiles *Melody language* in Sand Box mode, so you can't access to your **npm packages** that you have added to your project. However **lodash** is injected to view by default, so you can use it in your view code.
 
 ```
@@ -164,6 +179,7 @@ table
             td '@{color}'
     })
 ```
+
 ### What about *Controller* code?
 ```
 var viewEngine = new(require('middle-gear'))({
