@@ -1,12 +1,14 @@
-style
+var en_msg="Hello world!",
+  fa_msg= درود بر شما!;
+Style
   body {
     \if(model.lang==='en')
       font: "tahoma"
     \else if(model.lang==="fa")
       font: "b roya"
   }
-script
+Script  
   \if(model.lang==='en')
-    alert('Hello world!')
+    alert('@{en_msg}')
   \else if(model.lang==="fa")
-    alert('درود بر شما!')
+    alert('@{fa_msg}')

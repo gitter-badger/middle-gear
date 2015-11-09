@@ -11,6 +11,8 @@ v0.1.2
 * [Putting tags in a same line](#putting-tags-in-a-same-line)
 * [Breaking line into multiple lines](#breaking-line-into-multiple-lines)
 * [Plain text](#plain-text)
+* [Using Script and Style blocks](#using-script-and-style-blocks)
+* [Server Side JavaScript inside Script and Style tags](#server-side-javascript-inside-script-and-style-tags)
 * [Using custom tags in Melody](#using-custom-tags-in-melody)
 * [Shorthands](#Shorthands)
 * [Commenting](#Commenting)
@@ -58,9 +60,8 @@ input name="@{username}"
 ### Sending data to markup from outside
 *Middle Gear* is supporting **MVC** architecture. It means you can send **Model** to a Melody **View**.
 ```
-var __ = model;
 div
-  span "@{__.msg}"
+  span "@{model.msg}"
 ```
 **Note**: As you see we have used `model` object for accessing the data that has been sent from `controller`.
 
@@ -108,6 +109,35 @@ plain
 text"
 ```
 
+### Script and Style blocks
+Using *Script* and *Style* is as same as other tags. 
+```
+Style
+  body {
+    font: "tahoma"
+  }
+Script
+  alert('Hello world!')
+```
+### Server Side JavaScript inside Script and Style tags
+You can control the rendering of the client-side JavaScript and also CSS using *Melody*. For this you should explicitly express that you are writing server side JavaScript expression by adding `\` to the start of your code lines.
+```
+var en_msg="Hello world!",
+  fa_msg= درود بر شما!;
+  
+Style
+  body {
+    \if(model.lang==='en')
+      font: "tahoma"
+    \else if(model.lang==="fa")
+      font: "b roya"
+  }
+Script  
+  \if(model.lang==='en')
+    alert('@{en_msg}')
+  \else if(model.lang==="fa")
+    alert('@{fa_msg}')
+```
 ### Using custom tags in Melody
 For adding non-HTML5 tags to your markup you should explicitly express it using `>` before the name of tag.
 ```
