@@ -38,6 +38,10 @@
 
 <p><code>npm install middle-gear</code></p>
 
+<p><em>classic version (Non-Shorthand HTML if you hate indention)</em></p>
+
+<p><code>npm install middle-gear-classic</code></p>
+
 <ul>
 <li><a href="#lets-start">Let's Start</a></li>
 <li><a href="#adding-dynamic-value-to-markup">Adding dynamic value to markup</a></li>
@@ -68,12 +72,33 @@
 
 <p><em>Middle Gear</em> has provided a language named <strong>Melody</strong>. But you will not be forced to learn a new language. <strong>Melody</strong> is <strong>HTML</strong> plus <strong>JavaScript</strong>. With <em>Melody</em> You can <strong>mix</strong> JavaScript with HTML easily. There are a few simple rules to write <em>Melody</em>:</p>
 
+<h6>
+<a id="theres-only-one-rule-for-classic-version" class="anchor" href="#theres-only-one-rule-for-classic-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>There's only one rule for classic version:</h6>
+
+<ul>
+<li>Place tag's text (ex. <code>&lt;span&gt;It's Text&lt;/span&gt;</code>) inside quote marks <code>'</code> or <code>"</code> or even backtick <code>`</code>.</li>
+</ul>
+
+<pre><code>var colors = ['Blue', 'Green', 'Red'];
+&lt;table&gt;
+    _.each(colors, function(color) {
+        &lt;tr&gt;
+            &lt;td&gt; '@{color}' &lt;/td&gt;
+        &lt;/tr&gt;
+    })
+&lt;table&gt;
+</code></pre>
+
+<h6>
+<a id="rule-for-shorthand-version" class="anchor" href="#rule-for-shorthand-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rule for shorthand version:</h6>
+
 <ul>
 <li>Drop <code>&lt;</code>, <code>&gt;</code> or <code>/&gt;</code> from your start tags (ex. <code>&lt;/div&gt; &lt;br/&gt;</code>).</li>
 <li>Remove end tags (ex. <code>&lt;/div&gt;</code>) entirely.</li>
 <li>Place tag's text (ex. <code>&lt;span&gt;It's Text&lt;/span&gt;</code>) inside quote marks <code>'</code> or <code>"</code> or even backtick <code>`</code>.</li>
 <li>Use <code>indention</code> for applying HTML hierarchy. </li>
 <li>When putting HTML tags inside a JavaScript block apply <code>indention</code> rule too. </li>
+<li>Don't mix JavaScript and HTML in one line.</li>
 </ul>
 
 <pre><code>var colors = ['Blue','Green','Red'];
@@ -86,17 +111,17 @@ table
 
 <p><strong>Tip</strong>: As you can see, we have used <code>indention</code> to place the <code>for</code> expression inside of the <code>table</code> tag. We have done the same for  <code>tr</code> to tell that it's inside of  <code>for</code>. Note that placing a tag inside of code block(<code>{</code> ,<code>}</code>) will not make it as a subset of that code block, so using <code>indention</code> is a must everywhere.</p>
 
-<p><strong>Note:</strong> It's not possible to mix JavaScript and HTML in one line.</p>
-
 <h3>
 <a id="adding-dynamic-value-to-markup" class="anchor" href="#adding-dynamic-value-to-markup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding dynamic value to markup</h3>
 
-<p>As you see in above example, we are using <code>@{}</code> for adding dynamic values to our markup. Inside the <strong>Dynamic value block</strong>, you can use any expression that returns a value. All of following expressions are acceptable:</p>
+<p>As you can see in above example, we are using <code>@{}</code> for adding dynamic values to our markup. Inside the <strong>Dynamic value block</strong>, you can use any expression that returns a value. All of following expressions are acceptable:</p>
 
 <pre><code>span '1+1=@{1+1}'
 '@{parsInt("1")}'
 '@{1===1? true : false}'
 input name="@{username}"
+//Or in classic version:
+&lt;input name="@{username}"&gt;
 </code></pre>
 
 <h3>
@@ -113,16 +138,44 @@ input name="@{username}"
 <h3>
 <a id="inheritance" class="anchor" href="#inheritance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inheritance</h3>
 
-<pre><code>//layout.mel
-html
+<h6>
+<a id="classic-version" class="anchor" href="#classic-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classic version:</h6>
+
+<p><em>layout:</em></p>
+
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt; 'Middle Gear - Hello World!' &lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    load('content')
+  &lt;/div&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><em>Inheritor page:</em></p>
+
+<pre><code>layout("layout.mel")
+sector("content", function() {
+  &lt;span&gt; "Hello world!" &lt;/span&gt;
+})
+</code></pre>
+
+<h6>
+<a id="shorthand-version" class="anchor" href="#shorthand-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shorthand version:</h6>
+
+<p><em>layout:</em></p>
+
+<pre><code>html
   head
     title 'Middle Gear - Hello World'
   body
     load name="content"
 </code></pre>
 
-<pre><code>//index.mel
-layout src="layout.mel"
+<p><em>Inheritor page:</em></p>
+
+<pre><code>layout src="layout.mel"
 sector name="content"
   span "Hello world!"
 </code></pre>
@@ -130,7 +183,7 @@ sector name="content"
 <h3>
 <a id="putting-tags-in-a-same-line" class="anchor" href="#putting-tags-in-a-same-line" aria-hidden="true"><span class="octicon octicon-link"></span></a>Putting tags in a same line</h3>
 
-<p>Use <code>&gt;</code> for separating tags that are in the same line:</p>
+<p><strong>In shorthand version only</strong>, Use <code>&gt;</code> for separating tags that are in the same line:</p>
 
 <pre><code>ul.dropdown-menu
     li &gt; a href="#" 'Action'
@@ -140,7 +193,7 @@ sector name="content"
 <h3>
 <a id="breaking-line-into-multiple-lines" class="anchor" href="#breaking-line-into-multiple-lines" aria-hidden="true"><span class="octicon octicon-link"></span></a>Breaking line into multiple lines</h3>
 
-<p>For doing this, use <code>,</code> at the end of line:</p>
+<p><strong>In shorthand version only</strong>, use <code>,</code> at the end of line to break a line:</p>
 
 <pre><code>    button.btn.btn-default.dropdown-toggle,
 type="button",
@@ -149,12 +202,12 @@ data-toggle="dropdown",
 aria-haspopup="true" aria-expanded="false"
 </code></pre>
 
-<p><strong>Note</strong>: As you see, it's not needed to follow <code>indention</code> rule for the broken lines.</p>
+<p><strong>Note</strong>: As you can see, it's not needed to follow <code>indention</code> rule for the broken lines.</p>
 
 <h3>
 <a id="plain-text" class="anchor" href="#plain-text" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plain text</h3>
 
-<p>Browsers eliminate whitespaces but not <em>Middle Gear</em>. Everything that is written inside quote marks will be rendered in the same way.</p>
+<p>Browsers eliminate whitespaces but not <em>Middle Gear(both shorthand and classic versions)</em>. Everything that is written inside quote marks will be rendered in the same way.</p>
 
 <pre><code>  div
     pre
@@ -168,6 +221,19 @@ text"
 <a id="adding-script-and-style-blocks-to-markup" class="anchor" href="#adding-script-and-style-blocks-to-markup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Script and Style blocks to markup</h3>
 
 <p>Adding <em>Script</em> and <em>Style</em> is the same as other tags. </p>
+
+<pre><code>&lt;style&gt;
+  body {
+    font: "tahoma"
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  alert('Hello world!')
+&lt;/script&gt;
+</code></pre>
+
+<h6>
+<a id="shorthand-version-1" class="anchor" href="#shorthand-version-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shorthand version:</h6>
 
 <pre><code>Style
   body {
@@ -183,12 +249,36 @@ Script
 <p>You can control the rendering of the client-side JavaScript and also CSS using <em>Melody</em>. For this you should explicitly express that you are writing server side JavaScript expression by adding <code>\</code> to the start of your code lines.</p>
 
 <pre><code>var en_msg="Hello!",
+  en_font="tahoma",
+  es_msg= 'Hola!';
+
+&lt;style&gt;
+  body {
+    \if(model.lang==='en')
+      font: "@{en_font}"
+    \else if(model.lang==="es")
+      font: "ubuntu"
+  }
+&lt;/style&gt;
+&lt;script&gt;
+  \if(model.lang==='en')
+    alert('@{en_msg}')
+  \else if(model.lang==="es")
+    alert('@{es_msg}')
+&lt;/script&gt;
+</code></pre>
+
+<h6>
+<a id="shorthand-version-2" class="anchor" href="#shorthand-version-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shorthand version:</h6>
+
+<pre><code>var en_msg="Hello!",
+  en_font="tahoma",
   es_msg= 'Hola!';
 
 Style
   body {
     \if(model.lang==='en')
-      font: "lucida grande"
+      font: "@{en_font}"
     \else if(model.lang==="es")
       font: "ubuntu"
   }
@@ -202,7 +292,7 @@ Script
 <h3>
 <a id="using-custom-tags-in-melody" class="anchor" href="#using-custom-tags-in-melody" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using custom tags in Melody</h3>
 
-<p>For adding non-HTML5 tags to your markup you should explicitly express it using <code>&gt;</code> before the name of tag.</p>
+<p><strong>In shorthand version only</strong>, for adding non-HTML5 tags to your markup you should explicitly express it using <code>&gt;</code> before the name of tag.</p>
 
 <pre><code>div
   &gt; custom-tag 
@@ -217,6 +307,13 @@ Script
 <li>Use <code>#</code> after tag's name for adding id:</li>
 </ul>
 
+<pre><code>&lt;input#username&gt;
+&lt;input #username&gt;
+</code></pre>
+
+<h6>
+<a id="shorthand-version-3" class="anchor" href="#shorthand-version-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shorthand version:</h6>
+
 <pre><code>input#username
 input #username
 </code></pre>
@@ -224,6 +321,13 @@ input #username
 <ul>
 <li>Use <code>.</code> after tag's name or id for adding class:</li>
 </ul>
+
+<pre><code>&lt;input #username .class1 .class2&gt;
+&lt;input.class1.class2#username &gt;
+</code></pre>
+
+<h6>
+<a id="shorthand-version-4" class="anchor" href="#shorthand-version-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shorthand version:</h6>
 
 <pre><code>input #username .class1 .class2
 input.class1.class2#username 
@@ -237,10 +341,23 @@ input.class1.class2#username
 <h3>
 <a id="what-about-controller-code" class="anchor" href="#what-about-controller-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>What about Controller code?</h3>
 
+<pre><code>var viewEngineClassic = new(require('middle-gear-gear'))({
+  rootDirname: __dirname
+});
+var markup = viewEngineClassic.renderFile('index', {
+  msg: 'This message is from Controller',
+  lang: 'en'
+});
+console.log(markup);
+</code></pre>
+
+<h6>
+<a id="for-using-shorthand-version" class="anchor" href="#for-using-shorthand-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>For using shorthand version:</h6>
+
 <pre><code>var viewEngine = new(require('middle-gear'))({
   rootDirname: __dirname
 });
-var markup = viewEngine.renderFile('ex-1', {
+var markup = viewEngine.renderFile('index', {
   msg: 'This message is from Controller',
   lang: 'en'
 });
@@ -256,7 +373,7 @@ console.log(markup);
 <a id="angular" class="anchor" href="#angular" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Angular</strong>
 </h4>
 
-<p>Current version of <em>Middle Gear</em> compiler supports <strong>Angular 2.0</strong> syntax.</p>
+<p>Current version of <em>Middle Gear(both shorthand and classic versions)</em> compiler supports <strong>Angular 2.0</strong> syntax.</p>
 
 <pre><code>div
     span *ng-if="expression" #localValue [(two-way-binding)]="prop"
@@ -289,7 +406,7 @@ module.exports.views = {
 <h4>
 <a id="lodash" class="anchor" href="#lodash" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lodash</h4>
 
-<p><em>Middle Gear</em> compiles <em>Melody language</em> in Sand Box mode, so you can't access your <strong>npm packages</strong> that you have added to your project. However <strong>lodash</strong> is injected to view by default, so you can use it in your view code.</p>
+<p><em>Middle Gear</em> compiles <em>Melody language</em> in Sand Box mode, so you can't access your <strong>npm packages</strong> that you have added to your project. However <strong>lodash</strong> is injected to view by default, so you can use it in your view code(both shorthand and classic versions).</p>
 
 <pre><code>var colors = ['Blue', 'Green', 'Red'];
 table
