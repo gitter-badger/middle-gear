@@ -1,6 +1,0 @@
-var colors = ['Blue', 'Green', 'Red'];
-table
-    _.each(colors, function(color) {
-        tr
-            td '@{color}'
-    })

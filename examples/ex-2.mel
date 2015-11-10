@@ -1,4 +1,0 @@
-span '1+1=@{1+1}'
-'@{parsInt("1")}'
-'@{1===1? true : false}'
-input name="@{username}"
